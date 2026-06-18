@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>চৌকাঠ — Series Bible & Episode 1 Script</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Tiro+Bangla:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0c;
+    --bg2: #111114;
+    --bg3: #18181d;
+    --surface: #1e1e25;
+    --surface2: #252530;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #e8e8f0;
+    --text2: #9999b0;
+    --text3: #5a5a72;
+    --accent: #c8a96e;
+    --accent2: #e8c87a;
+    --red: #cc4444;
+    --red2: #ff6666;
+    --teal: #4a9e9e;
+    --teal2: #6ab8b8;
+    --purple: #7a6ecc;
+    --font-bn: 'Hind Siliguri', 'Tiro Bangla', sans-serif;
+    --font-en: 'Inter', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-bn); line-height: 1.7; overflow-x: hidden; }
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 4rem 2rem; position: relative;
+    background: radial-gradient(ellipse at 20% 50%, rgba(200,169,110,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 30%, rgba(74,158,158,0.05) 0%, transparent 55%), var(--bg);
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px);
+    pointer-events: none;
+  }
+  .series-tag { font-family: var(--font-en); font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(200,169,110,0.3); padding: 6px 18px; border-radius: 2px; margin-bottom: 2.5rem; display: inline-block; }
+  .hero-title { font-family: 'Tiro Bangla', serif; font-size: clamp(5rem, 15vw, 11rem); font-weight: 400; line-height: 0.9; color: var(--text); letter-spacing: -2px; margin-bottom: 1rem; }
+  .hero-title span { color: var(--accent); }
+  .hero-sub { font-family: var(--font-en); font-size: 13px; letter-spacing: 6px; text-transform: uppercase; color: var(--text3); margin-bottom: 3rem; }
+  .hero-tagline { font-size: 1.15rem; color: var(--text2); max-width: 540px; line-height: 1.8; font-style: italic; font-family: 'Tiro Bangla', serif; }
+  .scroll-hint { margin-top: 4rem; font-family: var(--font-en); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text3); display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .scroll-hint::after { content: ''; width: 1px; height: 40px; background: linear-gradient(to bottom, var(--text3), transparent); }
+  .nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,12,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; gap: 0; overflow-x: auto; }
+  .nav a { font-family: var(--font-en); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--text3); text-decoration: none; padding: 1rem 1.25rem; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.2s, border-color 0.2s; }
+  .nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .section { max-width: 900px; margin: 0 auto; padding: 5rem 2rem; }
+  .section-label { font-family: var(--font-en); font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+  .section-title { font-family: 'Tiro Bangla', serif; font-size: 2.2rem; font-weight: 400; color: var(--text); margin-bottom: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1.25rem; }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+  .overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 3rem; }
+  .overview-item { background: var(--bg2); padding: 1.25rem; }
+  .overview-item .label { font-family: var(--font-en); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text3); margin-bottom: 0.4rem; }
+  .overview-item .val { font-size: 0.95rem; color: var(--text); font-weight: 500; }
+  .logline { background: var(--bg3); border-left: 3px solid var(--accent); padding: 1.5rem 2rem; border-radius: 0 4px 4px 0; margin-bottom: 2rem; }
+  .logline p { font-family: 'Tiro Bangla', serif; font-size: 1.1rem; color: var(--text2); line-height: 1.9; font-style: italic; }
+  .char-grid { display: grid; gap: 1.5rem; }
+  .char-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; display: grid; grid-template-columns: auto 1fr; }
+  .char-color-bar { width: 4px; }
+  .char-body { padding: 1.5rem 1.75rem; }
+  .char-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.4rem; flex-wrap: wrap; }
+  .char-name-bn { font-family: 'Tiro Bangla', serif; font-size: 1.5rem; color: var(--text); }
+  .char-name-en { font-family: var(--font-en); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text3); }
+  .char-role { display: inline-block; font-family: var(--font-en); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 2px; margin-bottom: 1rem; }
+  .char-desc { font-size: 0.95rem; color: var(--text2); line-height: 1.8; margin-bottom: 1rem; }
+  .char-skills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-tag { font-family: var(--font-en); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text3); border: 1px solid var(--border2); padding: 3px 10px; border-radius: 2px; }
+  .char-arc { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text3); font-style: italic; }
+  .abrar .char-color-bar { background: var(--teal); }
+  .abrar .char-role { background: rgba(74,158,158,0.12); color: var(--teal2); }
+  .sikto .char-color-bar { background: var(--accent); }
+  .sikto .char-role { background: rgba(200,169,110,0.12); color: var(--accent2); }
+  .rocky .char-color-bar { background: var(--purple); }
+  .rocky .char-role { background: rgba(122,110,204,0.12); color: #9a90e0; }
+  .sabbir .char-color-bar { background: var(--red); }
+  .sabbir .char-role { background: rgba(204,68,68,0.12); color: var(--red2); }
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before { content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: 1px; background: var(--border2); }
+  .tl-item { position: relative; margin-bottom: 2.5rem; }
+  .tl-dot { position: absolute; left: -2rem; top: 6px; width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--accent); background: var(--bg); }
+  .tl-dot.red { border-color: var(--red); }
+  .tl-dot.teal { border-color: var(--teal); }
+  .tl-time { font-family: var(--font-en); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+  .tl-time.red { color: var(--red2); }
+  .tl-time.teal { color: var(--teal2); }
+  .tl-title { font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
+  .tl-text { font-size: 0.9rem; color: var(--text2); line-height: 1.8; }
+  .villain-box { background: linear-gradient(135deg, rgba(204,68,68,0.06) 0%, var(--bg3) 100%); border: 1px solid rgba(204,68,68,0.2); border-radius: 4px; padding: 2rem; margin-bottom: 2rem; }
+  .villain-box h3 { font-family: 'Tiro Bangla', serif; font-size: 1.4rem; color: var(--red2); margin-bottom: 0.5rem; }
+  .ep-hero { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; padding: 2.5rem; margin-bottom: 3rem; text-align: center; }
+  .ep-num { font-family: var(--font-en); font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+  .ep-title { font-family: 'Tiro Bangla', serif; font-size: 2rem; color: var(--text); margin-bottom: 0.75rem; }
+  .ep-runtime { font-family: var(--font-en); font-size: 12px; color: var(--text3); letter-spacing: 2px; }
+  .scene { margin-bottom: 4rem; border-left: 1px solid var(--border); padding-left: 2rem; }
+  .scene-header { margin-bottom: 1.5rem; }
+  .scene-num { font-family: var(--font-en); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text3); margin-bottom: 0.3rem; }
+  .scene-location { font-family: var(--font-en); font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); }
+  .scene-time { font-family: var(--font-en); font-size: 0.75rem; color: var(--text3); margin-top: 2px; }
+  .action { font-size: 0.92rem; color: var(--text2); line-height: 1.85; margin-bottom: 1.25rem; font-style: italic; }
+  .action em { font-style: normal; color: var(--text); font-weight: 500; }
+  .dialogue-block { margin-bottom: 1.5rem; }
+  .char-cue { font-family: var(--font-en); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.15rem; font-weight: 700; }
+  .char-cue.abrar-cue { color: var(--teal2); }
+  .char-cue.sikto-cue { color: var(--accent2); }
+  .char-cue.rocky-cue { color: #9a90e0; }
+  .char-cue.sabbir-cue { color: var(--red2); }
+  .char-cue.minor-cue { color: var(--text3); }
+  .char-emotion { font-family: var(--font-en); font-size: 10px; color: var(--text3); font-style: italic; margin-bottom: 0.3rem; }
+  .dialogue-text { background: var(--bg3); border-radius: 0 4px 4px 4px; padding: 0.9rem 1.25rem; font-size: 0.97rem; color: var(--text); line-height: 1.85; font-family: var(--font-bn); }
+  .dialogue-text .en { font-family: var(--font-en); font-style: italic; color: var(--text2); font-size: 0.85rem; display: block; margin-top: 0.4rem; }
+  .beat { background: rgba(200,169,110,0.05); border: 1px dashed rgba(200,169,110,0.2); border-radius: 4px; padding: 0.75rem 1.25rem; margin: 1.25rem 0; font-family: var(--font-en); font-size: 0.8rem; color: var(--accent); letter-spacing: 0.5px; }
+  .beat::before { content: '▶ CAMERA / '; opacity: 0.5; }
+  .sound-cue { background: rgba(74,158,158,0.05); border: 1px dashed rgba(74,158,158,0.2); border-radius: 4px; padding: 0.75rem 1.25rem; margin: 1.25rem 0; font-family: var(--font-en); font-size: 0.8rem; color: var(--teal2); letter-spacing: 0.5px; }
+  .sound-cue::before { content: '♪ SOUND / '; opacity: 0.5; }
+  .scene-sep { text-align: center; color: var(--text3); font-family: var(--font-en); font-size: 12px; letter-spacing: 4px; margin: 3rem 0; display: flex; align-items: center; gap: 1rem; }
+  .scene-sep::before, .scene-sep::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .ep-map { display: grid; gap: 8px; margin-bottom: 2rem; }
+  .ep-map-item { display: grid; grid-template-columns: 80px 1fr auto; gap: 12px; align-items: center; background: var(--bg3); border: 1px solid var(--border); border-radius: 4px; padding: 0.75rem 1rem; }
+  .ep-map-num { font-family: var(--font-en); font-size: 10px; letter-spacing: 2px; color: var(--text3); text-transform: uppercase; }
+  .ep-map-name { font-size: 0.9rem; color: var(--text); }
+  .ep-map-tag { font-family: var(--font-en); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; }
+  .tag-drama { background: rgba(74,158,158,0.15); color: var(--teal2); }
+  .tag-thriller { background: rgba(204,68,68,0.15); color: var(--red2); }
+  .tag-comedy { background: rgba(200,169,110,0.15); color: var(--accent2); }
+  .tag-action { background: rgba(122,110,204,0.15); color: #9a90e0; }
+  .tag-mystery { background: rgba(255,255,255,0.08); color: var(--text2); }
+  .arc-box { background: var(--bg3); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem; margin-bottom: 1.25rem; }
+  .arc-box h4 { font-size: 0.85rem; font-weight: 600; color: var(--accent); font-family: var(--font-en); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem; }
+  .arc-box p { font-size: 0.9rem; color: var(--text2); line-height: 1.8; }
+  .notes-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem; margin-top: 3rem; }
+  .notes-box h4 { font-family: var(--font-en); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text3); margin-bottom: 1rem; }
+  .notes-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .notes-box li { font-size: 0.88rem; color: var(--text2); padding-left: 1.25rem; position: relative; }
+  .notes-box li::before { content: '—'; position: absolute; left: 0; color: var(--text3); }
+  .flashback-warn { background: rgba(204,68,68,0.07); border: 1px solid rgba(204,68,68,0.18); border-radius: 4px; padding: 0.6rem 1rem; margin-bottom: 1rem; font-family: var(--font-en); font-size: 0.75rem; color: var(--red2); letter-spacing: 1px; }
+  @media (max-width: 600px) {
+    .char-card { grid-template-columns: 3px 1fr; }
+    .ep-map-item { grid-template-columns: 60px 1fr; }
+    .ep-map-tag { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero" id="top">
+  <div class="series-tag">Fictional Series · Written by Abrar · 2026</div>
+  <h1 class="hero-title">চৌ<span>কাঠ</span></h1>
+  <p class="hero-sub">Choukath &nbsp;·&nbsp; The Threshold</p>
+  <p class="hero-tagline">
+    আট বছর আগে চারজন কিশোর একটা রাতের ভুলে অন্ধকারের দিকে পা রেখেছিল।<br>
+    আজ কেউ একজন সেই পা গুনতে বসেছে।
+  </p>
+  <div class="scroll-hint">scroll</div>
+</section>
+
+<nav class="nav">
+  <a href="#overview">Series</a>
+  <a href="#characters">Characters</a>
+  <a href="#backstory">Backstory</a>
+  <a href="#villain">Villain</a>
+  <a href="#episode1">Episode 1</a>
+  <a href="#arcs">Story Arcs</a>
+  <a href="#notes">Writer's Notes</a>
+</nav>
+
+<section class="section" id="overview">
+  <p class="section-label">Series Overview</p>
+  <h2 class="section-title">সিরিজ পরিচিতি</h2>
+  <div class="overview-grid">
+    <div class="overview-item"><div class="label">Genre</div><div class="val">Thriller · Crime · Dark Comedy</div></div>
+    <div class="overview-item"><div class="label">Format</div><div class="val">8–10 Episodes · 15–20 min each</div></div>
+    <div class="overview-item"><div class="label">Setting</div><div class="val">Los Santos, San Andreas (fictional)</div></div>
+    <div class="overview-item"><div class="label">Tone</div><div class="val">Gritty realism, Gen Z humor, emotional gut-punch</div></div>
+    <div class="overview-item"><div class="label">Written by</div><div class="val">Abrar</div></div>
+    <div class="overview-item"><div class="label">Language</div><div class="val">Bangla — Dhaka dialect, code-switching</div></div>
+  </div>
+  <div class="logline">
+    <p>
+      চার পুরনো বন্ধু — যারা একে অপরকে আট বছর ধরে ইচ্ছে করে চেনে না — হঠাৎ এক সন্ধ্যায় আবার মুখোমুখি হয়। প্রত্যেকে নিজের জীবনে এমন একটা ফাঁদে পড়ে গেছে যেটা অদৃশ্য হাতে বোনা। সুতোগুলো মেলাতে বসলে দেখে — সব পথ সেই এক রাতে ফিরে যায়। সেই রাতটা, যেটা তারা ভুলে থাকার চেষ্টা করছিল।
+    </p>
+  </div>
+  <p style="color:var(--text2); font-size:0.92rem; line-height:1.9;">
+    "চৌকাঠ" মানে threshold — যেখানে দাঁড়ালে পুরনো দরজা বন্ধ হয়, নতুনটা এখনো খোলেনি। এই সিরিজ চারজন তরুণের গল্প যারা আট বছর আগে একটা ভুল করেছিল, সেটা লুকিয়েছিল, এবং ভেবেছিল — "ভুলে গেছি।" কিন্তু কেউ একজন ভোলেনি। একদিনও না।
+  </p>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="characters">
+  <p class="section-label">Main Characters</p>
+  <h2 class="section-title">মূল চরিত্র</h2>
+  <div class="char-grid">
+
+    <div class="char-card abrar">
+      <div class="char-color-bar"></div>
+      <div class="char-body">
+        <div class="char-header">
+          <span class="char-name-bn">আবরার</span>
+          <span class="char-name-en">ABRAR</span>
+        </div>
+        <span class="char-role">Software Engineer · The Brain</span>
+        <p class="char-desc">
+          লস সান্টোসের একটা মিড-লেভেল টেক ফার্মে সফটওয়্যার ইঞ্জিনিয়ার। বাসা ছোট, স্বপ্ন বড়, বস আরো বড়। জীবনটা চলছে — ঠিক যতটুকু চলা দরকার ততটুকুই। রাতে কোড করে, সকালে ঘুমায়, বেতনের দিন গণনা করে।
+          <br><br>
+          কিন্তু ভেতরে একটা জিনিস কাজ করে। সাইবার, OSINT, ডার্ক ওয়েব ট্রেসিং — এগুলো সে শিখেছে hobby হিসেবে। কেন শিখেছে, সেটা সে নিজেও পুরোপুরি জানে না। হয়তো জানে, কিন্তু বলে না।
+          <br><br>
+          আট বছর আগে যা হয়েছিল সেটা মাঝে মাঝে স্বপ্নে আসে। সে উঠে বসে, পানি খায়, ঘুমানোর চেষ্টা করে। কাউকে বলে না।
+        </p>
+        <div class="char-skills">
+          <span class="skill-tag">Ethical Hacking</span>
+          <span class="skill-tag">OSINT</span>
+          <span class="skill-tag">Data Forensics</span>
+          <span class="skill-tag">Overthinks Everything</span>
+          <span class="skill-tag">Terrible at confrontation</span>
+        </div>
+        <p class="char-arc">Arc: নির্দোষ মানুষ যে নির্দোষ না → সন্দেহভাজন → অনিচ্ছুক leader</p>
+      </div>
+    </div>
+
+    <div class="char-card sikto">
+      <div class="char-color-bar"></div>
+      <div class="char-body">
+        <div class="char-header">
+          <span class="char-name-bn">সিক্ত</span>
+          <span class="char-name-en">SIKTO</span>
+        </div>
+        <span class="char-role">LS Auto Mechanic · The Hands</span>
+        <p class="char-desc">
+          লস সান্টোসে "সিগনেচার অটো" গ্যারেজের মালিক। Exotic cars, underground race culture, গ্যাং ক্লায়েন্ট থেকে মিলিয়নেয়ার — সবাই আসে। তার হাত দিয়ে যা বের হয়, সেটা চলে।
+          <br><br>
+          ঢাকাইয়া accent এখনো যায়নি। আট বছর পার হলেও। "কী কইলি রে," "ব্যাপারটা কী হইতাসে" — এই ভাষায় কথা বলে। ওটা ওর identity। সে বদলায়নি, শুধু শহর বদলেছে।
+          <br><br>
+          গ্যারেজে লাশ পাওয়া যায়। তার টুলবক্স, তার গ্রিজ, তার গ্যারেজের floor। সব প্রমাণ তার দিকে। সে জানে এটা সাজানো। কিন্তু কেন সাজানো — সেটা বুঝতে পারছে না এখনো।
+        </p>
+        <div class="char-skills">
+          <span class="skill-tag">Automotive</span>
+          <span class="skill-tag">Street Smart</span>
+          <span class="skill-tag">Physical</span>
+          <span class="skill-tag">Underground Network</span>
+          <span class="skill-tag">Dhaka Accent (permanent)</span>
+        </div>
+        <p class="char-arc">Arc: LA-তে সফল → ফাঁদে পড়া → পুরনো দুনিয়ায় ফেরা</p>
+      </div>
+    </div>
+
+    <div class="char-card rocky">
+      <div class="char-color-bar"></div>
+      <div class="char-body">
+        <div class="char-header">
+          <span class="char-name-bn">রকি</span>
+          <span class="char-name-en">ROCKY</span>
+        </div>
+        <span class="char-role">Rich Kid Businessman · The Money</span>
+        <p class="char-desc">
+          বাপের টাকা আর নিজের মাথা — দুটো মিলিয়ে একটা empire। কিন্তু সে সেটা admit করতে চায় না। বারে বেশি সময় কাটায়, ড্রিংকস করে, phone-এ deal করে, মানুষকে ignore করে — এই হলো রকির weekday।
+          <br><br>
+          Business rival মেহেদী তার একটা জিনিস নিয়ে গেছে। Legal way-তে ফাইট করলে রকি নিজেই ডুববে — সে জানে। তাই করছে না কিছু। বারে বসে আছে। আর ভিতরে ভিতরে পুরে যাচ্ছে।
+          <br><br>
+          মাতাল অবস্থায় সে যা বলে, sober অবস্থায় সেটা মনে থাকে না। এটা তার জন্য convenience।
+        </p>
+        <div class="char-skills">
+          <span class="skill-tag">Business</span>
+          <span class="skill-tag">Connections</span>
+          <span class="skill-tag">Money</span>
+          <span class="skill-tag">Safe Houses</span>
+          <span class="skill-tag">Unpredictable when drunk</span>
+        </div>
+        <p class="char-arc">Arc: অলস ধনী → বিপদে পড়া মানুষ → গ্রুপের unexpected backbone</p>
+      </div>
+    </div>
+
+    <div class="char-card sabbir">
+      <div class="char-color-bar"></div>
+      <div class="char-body">
+        <div class="char-header">
+          <span class="char-name-bn">সাব্বির</span>
+          <span class="char-name-en">SABBIR</span>
+        </div>
+        <span class="char-role">Ex-Military · The Ghost</span>
+        <p class="char-desc">
+          সাবেক military, classified op-এ নিজের বিবেককে অর্ডারের আগে রেখেছিল। Suspended। এক বছর jobless। এখন dark web-এ কাজ করে — নাম নেই, ছবি নেই, শুধু একটা callsign। Mission আসে, মিশন যায়।
+          <br><br>
+          সে প্রতিটা কথা ওজন করে বলে। আধা বাক্য বলে থামে। বাকিটা তোমাকে বুঝে নিতে হয়। তাতে সমস্যা হলে সেটা তোমার সমস্যা।
+          <br><br>
+          এপিসোড ২-তে সে একটা job নেয়। client কে সে চেনে না। target কে সে চেনে না। কিন্তু চিনলে কী হত?
+        </p>
+        <div class="char-skills">
+          <span class="skill-tag">CQB</span>
+          <span class="skill-tag">Tactical Planning</span>
+          <span class="skill-tag">Surveillance</span>
+          <span class="skill-tag">Zero digital footprint</span>
+          <span class="skill-tag">Terrifying when quiet</span>
+        </div>
+        <p class="char-arc">Arc: anonymous operator → পুরনো বন্ধুদের সাথে দেখা → নৈতিক সংকটে পড়া মানুষ</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="backstory">
+  <p class="section-label">The Night Nobody Talks About</p>
+  <h2 class="section-title">সেই রাতের কথা</h2>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">৮ বছর আগে · স্কুলের শেষ বছর</div>
+      <div class="tl-title">পাঁচ বন্ধু, সমুদ্রের ধারে</div>
+      <p class="tl-text">
+        আবরার, সিক্ত, রকি, সাব্বির — আর রাইয়ান। সমুদ্রতীরে শেষ রাতের আড্ডা। স্কুল শেষ হচ্ছে, সবাই আলাদা হবে। সেই কারণেই পার্টি। রাইয়ানের ছোট ভাই তানভীরও এসেছে — ১৪ বছর বয়স, রাইয়ানের সাথে সবসময় থাকে।
+        <br><br>
+        রাইয়ান মদ খেয়েছে। একটু বেশি। জিহ্বায় লাগাম নেই।
+      </p>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot red"></div>
+      <div class="tl-time">সেই রাত · রাত ১১টার পর · বনফায়ার থেকে দূরে</div>
+      <div class="tl-title">রাইয়ান যা বলল</div>
+      <p class="tl-text">
+        রাইয়ান বলল — সাব্বিরের মা'কে নিয়ে কিছু। নোংরা কথা। সরাসরি। মুখে হাসি রেখে।
+        <br><br>
+        সাব্বির চুপ করে থাকল। বাকিরাও। রাইয়ান থামল না। বলতে থাকল — রকির বাবার ব্যবসা নিয়ে যা শুনেছে তা বলল, আবরারকে "ভিতু" বলল, সিক্তকে "গরিবের বাচ্চা" বলল। একটার পর একটা। গলায় সেই চাপা হাসি।
+        <br><br>
+        তানভীর একটু দূরে বসে দেখছিল। সে বলল, "ভাই, থাক না।" রাইয়ান বলল, "তুই চুপ কর।"
+        <br><br>
+        সাব্বির উঠে দাঁড়াল। বাকিরাও উঠল।
+      </p>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot red"></div>
+      <div class="tl-time">সেই রাত · নির্জন এলাকা, পানি থেকে একটু দূরে</div>
+      <div class="tl-title">শুধু একটা ধোলাই দেওয়ার কথা ছিল</div>
+      <p class="tl-text">
+        চারজন রাইয়ানকে বলল চলো একটু। রাইয়ান গেল — নেশার ঘোরে, নিজেকে অপরাজেয় মনে করছিল। তানভীর পিছনে পিছনে গেল। সে বলল, "ভাই যাইও না।" রাইয়ান বলল, "তুই ঘুরে যা ভাই। এরা আমার কিছু করতে পারবে না।"
+        <br><br>
+        মারামারি হলো। ঘুষি, ধাক্কা। রাইয়ান পড়ে গেল। উঠল না। ওরা ভাবল অজ্ঞান। তানভীর দেখল সব — পাথরের আড়াল থেকে, হাত মুখে চেপে।
+        <br><br>
+        রাইয়ান আর ওঠেনি। মাথায় পাথরে লেগেছিল পড়ার সময়। হয়তো। কারণটা ওরা কখনো জানেনি।
+      </p>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot red"></div>
+      <div class="tl-time">সেই রাত · প্যানিক</div>
+      <div class="tl-title">চারজনের সিদ্ধান্ত</div>
+      <p class="tl-text">
+        পুলিশ ডাকলে সব শেষ। স্কুল শেষ হওয়ার মুহূর্তে জেলের মুখ দেখতে হবে। চারজন মিলে সিদ্ধান্ত নিল। লাশ সমুদ্রে। প্রমাণ নষ্ট। কোনো কথা না।
+        <br><br>
+        পরদিন লাশ ভেসে উঠল। পুলিশ "দুর্ঘটনা" লিখল ফাইলে।
+        <br><br>
+        সেই রাতের শপথ: এই বিষয়ে আর কোনোদিন কথা হবে না। কেউ কাউকে দেখবে না। ভুলে যাব।
+      </p>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">সেই রাত · তানভীর</div>
+      <div class="tl-title">সে সব দেখেছিল</div>
+      <p class="tl-text">
+        তানভীর সব দেখল। পুলিশকে বলতে গিয়ে থামল — সে তখন ১৪, কোনো প্রমাণ নেই। কেউ বিশ্বাস করবে না।
+        <br><br>
+        সে চুপ থাকল। কিন্তু ভোলেনি। একটা দিনও না।
+        <br><br>
+        আট বছর সে তৈরি হলো। পড়ল, বড় হলো, টাকা করল, connection করল। একটাই লক্ষ্য রেখে।
+      </p>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot teal"></div>
+      <div class="tl-time">৮ বছর পরে · বর্তমান</div>
+      <div class="tl-title">এখন শুরু হচ্ছে</div>
+      <p class="tl-text">
+        তানভীর সরাসরি মারতে চায় না। সে চায় প্রতিটাকে ধ্বংস করতে — ভিতর থেকে। নাম। ক্যারিয়ার। স্বাধীনতা। তারপর শেষ ধাপ।
+        <br><br>
+        প্রতিটা incident-এ একটা সংকেত থাকবে — সেই রাতের সাথে কানেকশন। একটা শেলের আকৃতি। সমুদ্রের স্মৃতি।
+        <br><br>
+        চারজন এখনো জানে না কে তাদের ধ্বংস করছে। শুধু জানে — জীবনটা হঠাৎ ভাঙতে শুরু করেছে।
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="villain">
+  <p class="section-label">The Architect</p>
+  <h2 class="section-title">যে হিসাব নিতে এসেছে</h2>
+
+  <div class="villain-box">
+    <h3>তানভীর — TANVIR</h3>
+    <p style="color:var(--text2); font-size:0.85rem; font-family:var(--font-en); text-transform:uppercase; letter-spacing:2px; margin-bottom:1rem;">Raiyan's younger brother · The Patient One</p>
+    <p style="color:var(--text2); font-size:0.95rem; line-height:1.9;">
+      তানভীর দানব নয়। সে একটা ছেলে যে তার ভাইকে হারিয়েছিল এবং সেই রাতে একটা পাথরের আড়াল থেকে দাঁড়িয়ে দেখেছিল। ১৪ বছর বয়সে যা দেখেছিল সেটা তার থেকে কিছু নিয়ে গেছে — হয়তো ঘুম, হয়তো সরলতা, হয়তো আরো কিছু।
+    </p>
+    <br>
+    <p style="color:var(--red2); font-size:0.95rem; line-height:1.9; font-style:italic; font-family:'Tiro Bangla', serif;">
+      "আমি চাইলে তোদের চারজনকে এক সেকেন্ডে শেষ করতে পারতাম। কিন্তু সহজ মৃত্যু তোদের প্রাপ্য না। তোরা আমার ভাইকে কোনো কারণ ছাড়া — তোদের রেপুটেশন, তোদের নাম, সব কেড়ে নিয়ে তারপর বুঝতে দেব বাকিটুকু।"
+    </p>
+  </div>
+
+  <div class="arc-box">
+    <h4>তানভীরের Plan — এপিসোড বাই এপিসোড</h4>
+    <p>আবরার: অফিসের সামনে লাশ + তার access card। Sikto: গ্যারেজে লাশ + তার টুলস। রকি: business আক্রমণ। সাব্বির: একটা dark web job যেটা তাকে trap-এ ফেলবে। প্রতিটা incident-এ ছোট একটা seashell sign — সেই বিচের স্মৃতি। এটা ওরা দেখতে পাবে না যতদিন একসাথে না হয়।</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- =============================== EPISODE 1 SCRIPT =============================== -->
+
+<section class="section" id="episode1">
+  <p class="section-label">Episode 01 — Full Script</p>
+  <h2 class="section-title">পাইলট</h2>
+
+  <div class="ep-hero">
+    <div class="ep-num">Episode 01</div>
+    <div class="ep-title">"২৪ ঘন্টা আগে"</div>
+    <div class="ep-runtime">Est. Runtime: 17–20 minutes · Los Santos, San Andreas</div>
+  </div>
+
+  <p style="font-family:var(--font-en); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--text3); margin-bottom:1rem;">Episode Structure</p>
+  <div class="ep-map">
+    <div class="ep-map-item"><span class="ep-map-num">Cold Open</span><span class="ep-map-name">সকাল — টিভিতে নিউজ — আবরার উঠে দাঁড়ায়</span><span class="ep-map-tag tag-thriller">Hook</span></div>
+    <div class="ep-map-item"><span class="ep-map-num">Title Card</span><span class="ep-map-name">চৌকাঠ — "২৪ ঘন্টা আগে"</span><span class="ep-map-tag tag-mystery">Rewind</span></div>
+    <div class="ep-map-item"><span class="ep-map-num">Act 1-A</span><span class="ep-map-name">আবরারের normal life — দোকান — বস — রাতের অফিস</span><span class="ep-map-tag tag-drama">Character</span></div>
+    <div class="ep-map-item"><span class="ep-map-num">Act 1-B</span><span class="ep-map-name">সকালে নিউজ পুরো দেখা — কার্ড নেই — পালানো</span><span class="ep-map-tag tag-thriller">Thriller</span></div>
+    <div class="ep-map-item"><span class="ep-map-num">Transition</span><span class="ep-map-name">চাকার match cut — Los Santos, সিক্তের গ্যারেজ</span><span class="ep-map-tag tag-comedy">Comedy</span></div>
+    <div class="ep-map-item"><span class="ep-map-num">Act 2</span><span class="ep-map-name">সিক্তের normal day — ফোন আসে — পালানো</span><span class="ep-map-tag tag-thriller">Thriller</span></div>
+    <div class="ep-map-item"><span class="ep-map-num">Act 3</span><span class="ep-map-name">আবরার + সিক্ত মিটিং — বারের দিকে</span><span class="ep-map-tag tag-action">Action</span></div>
+    <div class="ep-map-item"><span class="ep-map-num">Cliffhanger</span><span class="ep-map-name">বারের কোণায় একটা সিলুয়েট — ব্ল্যাক কাট</span><span class="ep-map-tag tag-mystery">Hook</span></div>
+  </div>
+
+  <!-- ===== COLD OPEN ===== -->
+  <div class="scene-sep">COLD OPEN</div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <div class="scene-num">Scene 01</div>
+      <div class="scene-location">INT. ABRAR'S APARTMENT — LOS SANTOS</div>
+      <div class="scene-time">সকাল ৮:০৩ · আজ</div>
+    </div>
+
+    <div class="beat">Tight on a TV screen. News ticker. Morning anchor. The image behind her — a building Abrar recognizes. We don't see him yet.</div>
+
+    <div class="sound-cue">TV audio bleeds into dead apartment silence. A ceiling fan clicking slightly. One slow rotation, click, one slow rotation.</div>
+
+    <p class="action">
+      <em>আবরার</em> সোফায় শুয়ে আছে। পরনে কালকের জামা। চোখ বন্ধ। ঘুম না ঘুম না এই মাঝামাঝি। টিভি চলছে — সে ঘুমাতে ঘুমাতে চালু করেছিল, শেষ পর্যন্ত ঘুম হয়নি।
+    </p>
+
+    <p class="action">
+      নিউজ অ্যাংকরের গলা একটু উপরে ওঠে।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue minor-cue">TV Anchor (off-screen)</div>
+      <div class="char-emotion">breaking news tone</div>
+      <div class="dialogue-text">
+        "...গতরাত একটার দিকে Vinewood Boulevard এলাকার একটি আইটি অফিসের সামনে অজ্ঞাত একজন ব্যক্তির লাশ পাওয়া গেছে। লাশের পাশে একটি ID access card উদ্ধার করা হয়েছে, পুলিশ তদন্ত..."
+      </div>
+    </div>
+
+    <p class="action">
+      আবরার চোখ খোলে না। কিন্তু কিছু একটা হয়। সামান্য।
+    </p>
+
+    <p class="action">
+      তারপর টিভিতে building-এর footage দেখা যায়।
+    </p>
+
+    <p class="action">
+      আবরার উঠে বসে। চোখে ঘুমের চিহ্ন। টিভির দিকে তাকায়। একটু। তারপর আস্তে সোফার কুশন থেকে একটা জিনিস বের করার চেষ্টা করে — এলোমেলো ভাবে, habit-এ। তারপর পকেটে হাত দেয়। কিছু নেই। অন্য পকেটে হাত দেয়।
+    </p>
+
+    <p class="action">
+      টিভিতে তখন সেই access card-এর close-up।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue minor-cue">TV Anchor</div>
+      <div class="dialogue-text">
+        "...উদ্ধারকৃত card টিতে নাম দেখা যাচ্ছে — Abrar Ahmed। সর্বশেষ CCTV footage অনুযায়ী রাত ১২:৩২ মিনিটে ওই ব্যক্তি ওই বিল্ডিং থেকে..."
+      </div>
+    </div>
+
+    <p class="action">
+      আবরার উঠে দাঁড়ায়।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">এক সেকেন্ড থামে। গলা কাঁপে না। কিন্তু মুখ একটু খোলে।</div>
+      <div class="dialogue-text">
+        What the fu—
+      </div>
+    </div>
+
+    <div class="beat">CUT TO BLACK. Title card burns in — চৌকাঠ. Then below it: "২৪ ঘন্টা আগে।"</div>
+
+    <div class="sound-cue">Score: single distorted guitar note held long. Fades.</div>
+  </div>
+
+  <!-- ===== ACT 1-A: 24 HRS AGO ===== -->
+  <div class="scene-sep">২৪ ঘন্টা আগে</div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <div class="scene-num">Scene 02</div>
+      <div class="scene-location">INT. ABRAR'S APARTMENT — MORNING</div>
+      <div class="scene-time">গতকাল · সকাল ৭:৪৮</div>
+    </div>
+
+    <div class="flashback-warn">⬤ FLASHBACK — 24 HRS AGO</div>
+
+    <div class="beat">Alarm goes off. Old phone, cracked screen protector hanging off one corner. He slaps it off. Lies there another thirty seconds. Gets up.</div>
+
+    <p class="action">
+      আবরারের ফ্ল্যাট। ছোট। দেয়ালে একটা IKEA poster — half-unstuck, এক কোণা ঝুলছে। কিচেনে দুটো কাপ ডুবে আছে সিংকে। Dining table-এ laptop, দুটো empty Red Bull can, একটা খোলা Halim-এর প্যাকেট।
+    </p>
+
+    <p class="action">
+      সে fridge খোলে। একটু দেখে। বন্ধ করে দেয়। ডিম দুটো আছে কিন্তু সেটা করার মেজাজ নেই। প্যান্ট্রি থেকে একটা Maggi-র প্যাকেট বের করে। দেখে। ফেরত রাখে। ব্যাগ তুলে বেরিয়ে যায়।
+    </p>
+  </div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <div class="scene-num">Scene 03</div>
+      <div class="scene-location">EXT./INT. CORNER SHOP — LOS SANTOS</div>
+      <div class="scene-time">সকাল ৮:১৫</div>
+    </div>
+
+    <div class="beat">A small convenience store. The kind that sells everything from SIM cards to stale croissants. Owner — Uncle Karim, 50s, always watching a drama on his phone propped against the cigarette rack.</div>
+
+    <p class="action">
+      আবরার ঢোকে। সরাসরি রুটির দিকে হাঁটে। পেছন থেকে Uncle Karim-এর গলা।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue minor-cue">Karim Uncle</div>
+      <div class="char-emotion">চোখ ফোনে, কথা মুখে</div>
+      <div class="dialogue-text">
+        আবরার। কালকের টাকা দিলা না।
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">রুটি হাতে, পিছনে ফিরে না দেখেই</div>
+      <div class="dialogue-text">
+        আজকেরটার সাথে দেব। দুইটা একসাথে।
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue minor-cue">Karim Uncle</div>
+      <div class="char-emotion">নাটকের dialogue না দেখে আবরারের দিকে তাকায়</div>
+      <div class="dialogue-text">
+        তোমার মাথায় কী শুধু কম্পিউটার? এই বয়সে বিয়া করো। খাওয়া-দাওয়া ঠিক হইব।
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">counter-এ টাকা রাখতে রাখতে, ক্লান্ত হাসি</div>
+      <div class="dialogue-text">
+        Uncle, বিয়া করলে খাওয়া ঠিক হয় না। খরচ বাড়ে।
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue minor-cue">Karim Uncle</div>
+      <div class="char-emotion">হেসে ফেলে, নাটকে মনোযোগ দেয়</div>
+      <div class="dialogue-text">
+        তোমার মুখের জন্যই কেউ বিয়া করব না।
+      </div>
+    </div>
+
+    <p class="action">
+      আবরার বেরিয়ে যায়। রাস্তায় রুটি কামড়াতে কামড়াতে হাঁটে। ফোনে একটা notification আসে — office calendar। "Client demo — tomorrow 9am. Deploy by tonight."
+    </p>
+
+    <p class="action">
+      সে notification dismiss করে। তারপর আবার খোলে। তারপর আবার dismiss করে।
+    </p>
+  </div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <div class="scene-num">Scene 04</div>
+      <div class="scene-location">INT. TECH OFFICE — LOS SANTOS</div>
+      <div class="scene-time">সকাল ৯:৩০ — রাত ১২:১০ পর্যন্ত</div>
+    </div>
+
+    <div class="beat">Open plan office. Morning — full. Evening — half. Night — just Abrar. Monitor glow, empty coffee cups. Time-lapse suggested through light changes.</div>
+
+    <p class="action">
+      সকালে বস তাকে ডাকে। বস-এর কেবিনের কাচের দরজা। আবরার বসে আছে, বস বলছে।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue minor-cue">বস (Mr. Shaheen, 40s, সবসময় কফি হাতে)</div>
+      <div class="char-emotion">চেয়ারে হেলান দিয়ে, tone casual কিন্তু actual meaning হলো তোমার কাছে option নেই</div>
+      <div class="dialogue-text">
+        আবরার ভাই, client কাল সকালে। তুমি জানো demo কতটা important। Payment টা এর উপরে। আমি তো জানি তোমার হাতের কাজ, তাই না? একটু দেরি হলে হবে, আজকে রাত করলে মানুষে করে।
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">এক সেকেন্ড চুপ। মুখে কিছু আসতে যায়, আসে না।</div>
+      <div class="dialogue-text">
+        ঠিক আছে।
+      </div>
+    </div>
+
+    <div class="beat">He leaves the cabin. His face: blank. His hands: keys already out of pocket. He knows tonight is gone.</div>
+
+    <p class="action">
+      রাত দশটা। অফিস ফাঁকা। শুধু সার্ভার রুমের গুনগুন শব্দ। আবরার কোড করছে। মনিটর তিনটা — একটায় code, একটায় error log, একটায় Stack Overflow যেখানে তার সমস্যার exact solution নেই।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">মনিটরের দিকে তাকিয়ে, নিচু গলায়</div>
+      <div class="dialogue-text">
+        এটা কেন কাজ করছে না। এটা কেন — এটা তো করার কথা। কেন করছে না।
+      </div>
+    </div>
+
+    <p class="action">
+      ফোনে বসের message: "Kemon cholche? 😊"
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">ফোন screen দেখে, রেখে দেয়, type করে না</div>
+      <div class="dialogue-text">
+        হুম।
+      </div>
+    </div>
+
+    <p class="action">
+      রাত ১২টা। হঠাৎ terminal-এ একটা green line আসে। Deploy successful। আবরার চেয়ারে হেলান দেয়। চোখ বন্ধ করে। পনের সেকেন্ড এভাবে বসে থাকে। তারপর ব্যাগ তুলে বের হয়।
+    </p>
+  </div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <div class="scene-num">Scene 05</div>
+      <div class="scene-location">EXT. OFFICE ENTRANCE — LOS SANTOS</div>
+      <div class="scene-time">রাত ১২:৩২</div>
+    </div>
+
+    <div class="beat">He exits. Security camera — timestamp. He's the last one. Building behind him goes dark section by section.</div>
+
+    <p class="action">
+      <em>আবরার</em> বেরিয়ে আসে। ব্যাগ কাঁধে। ক্লান্তি পুরো শরীরে। রাস্তায় কুয়াশা, overhead light একটা মরমর করছে। সে ফোনে Uber দেখছে, হাঁটতে হাঁটতে।
+    </p>
+
+    <p class="action">
+      জ্যাকেটের পকেট থেকে কিছু একটা পড়ে যায় — সে শোনে না। পকেটে হাত দেয়, ফোনটা নেয়, car confirm করে। হাঁটতে থাকে।
+    </p>
+
+    <div class="beat">Camera holds on the sidewalk. A small white access card. "ABRAR AHMED — NEXATECH SOLUTIONS." Laying in the gutter near the building entrance. Just there. Nobody picks it up.</div>
+
+    <div class="sound-cue">Silence. A distant car. Then silence again.</div>
+  </div>
+
+  <!-- ===== BACK TO PRESENT ===== -->
+  <div class="scene-sep">বর্তমানে ফেরা</div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <div class="scene-num">Scene 06</div>
+      <div class="scene-location">INT. ABRAR'S APARTMENT — MORNING</div>
+      <div class="scene-time">আজ · সকাল ৮:০৬ · ২৪ ঘন্টা পরে</div>
+    </div>
+
+    <div class="flashback-warn">⬤ BACK TO PRESENT</div>
+
+    <p class="action">
+      আবরার টিভির সামনে দাঁড়িয়ে আছে। Anchor এখন একটা reporter-এর সাথে কথা বলছে — সে ওই building-এর সামনে দাঁড়িয়ে।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue minor-cue">Reporter (on site)</div>
+      <div class="char-emotion">live</div>
+      <div class="dialogue-text">
+        ...পুলিশ জানিয়েছে সর্বশেষ CCTV-তে যার ছবি পাওয়া গেছে এবং লাশের পাশে যার card পাওয়া গেছে — তাকে এখনো ডাকা হয়নি। তবে তদন্তের আওতায় আছেন বলে জানা...
+      </div>
+    </div>
+
+    <p class="action">
+      আবরারের ফোন বাজে। সে screen দেখে — অফিসের একজন colleague, Rafi।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">ফোন তোলে। গলায় কিছু নেই।</div>
+      <div class="dialogue-text">
+        হ্যাঁ।
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue minor-cue">Rafi (ফোনে, চাপা গলায়)</div>
+      <div class="dialogue-text">
+        ভাই... ভাই, পুলিশ আসছে। আপনার card... ভাই আপনি কোথায়? আপনাকে জিজ্ঞেস করছে location কোথায়। Shaheen ভাই বলছে আমাকে call করতে।
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">দুই সেকেন্ড চুপ</div>
+      <div class="dialogue-text">
+        আমি একটু দূরে আছি। পরে কথা বলছি।
+      </div>
+    </div>
+
+    <p class="action">
+      কেটে দেয়। টিভির দিকে তাকায়। তারপর ঘরের চারদিকে তাকায় — এইভাবে কেউ তাকায় যে বুঝতে চাইছে কতটুকু সময় আছে।
+    </p>
+
+    <div class="beat">He grabs his backpack from the floor. Laptop. Charger. Hoodie. Doesn't think. Just grabs. The door closes. Key in the knob. He stares at the door one second. Then walks.</div>
+
+    <div class="sound-cue">TV still on. Anchor still talking. Empty apartment.</div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <div class="scene-num">Scene 07</div>
+      <div class="scene-location">EXT. LOS SANTOS FREEWAY — OUTSKIRTS</div>
+      <div class="scene-time">সকাল ৯:২০</div>
+    </div>
+
+    <div class="beat">Abrar in a beat-up Uber. Driver doesn't speak. City passing. He's staring at nothing. Then his laptop opens on his knees.</div>
+
+    <p class="action">
+      শহর পিছনে পড়ছে। আবরার উইন্ডোর দিকে তাকিয়ে। তারপর বলে।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">নিজের মনে, শান্ত — কিন্তু কোথাও একটা কাঁপছে</div>
+      <div class="dialogue-text">
+        আমাকে কেউ ফাঁসাচ্ছে। আমার কার্ড কেউ তুলে রেখেছিল। কোনো connection ছাড়া এটা হয় না। কে করতে পারে এটা।
+      </div>
+    </div>
+
+    <p class="action">
+      সে laptop খোলে। News search করে। ওই incident। তারপর অন্য কিছু — Los Santos-এর South side-এ একটা garage incident। একটু আগের news। লাশ পাওয়া গেছে — একটা mechanic shop-এ। Owner suspect।
+    </p>
+
+    <p class="action">
+      সে screen-এ যা দেখে সেটা camera দেখায় — একটা image। Crime scene-এর পাশে, ফ্লোরে — একটা ছোট নকশা। একটা shell-এর আকৃতি, চকে আঁকা।
+    </p>
+
+    <p class="action">
+      সে স্ক্রিনে zoom করে। চোখ সরু হয়। কোথাও কিছু নড়ে।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">হালকা। প্রায় নিঃশ্বাস।</div>
+      <div class="dialogue-text">
+        এটা কী।
+      </div>
+    </div>
+
+    <div class="beat">Wheels of the Uber spinning — MATCH CUT TO — a torque wrench tightening a wheel. Pull back. Los Santos. South side. A garage.</div>
+  </div>
+
+  <!-- ===== SIKTO'S GARAGE ===== -->
+  <div class="scene-sep">Los Santos South · Sikto's World</div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <div class="scene-num">Scene 08</div>
+      <div class="scene-location">INT. SIGNATURE AUTO GARAGE — LOS SANTOS SOUTH</div>
+      <div class="scene-time">গতকাল সকাল · same timeline as Abrar's morning</div>
+    </div>
+
+    <div class="flashback-warn">⬤ PARALLEL TIMELINE — YESTERDAY · SIKTO</div>
+
+    <div class="beat">The garage smells of rubber and WD-40. A custom Hellcat on the lift. Tool cart with a Bangladeshi flag sticker on the side — faded, been there years. Sikto slides out from under a vintage muscle car.</div>
+
+    <p class="action">
+      <em>সিক্ত</em> উঠে দাঁড়ায়। হাত মুছে। কপালে একটু ঘাম, তার কিছু না। সে গ্যারেজে হাঁটে এমনভাবে যেন এইটাই তার পুরো universe।
+    </p>
+
+    <p class="action">
+      বাইরে একটা Porsche ঢোকে। ড্রাইভার বের হয় — সোনার চেইন, সানগ্লাস, বুকে হাওয়া ভরা।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue minor-cue">Rafiq — স্থানীয় Deshi businessman, 40s, নিজেকে খুব cool মনে করেন</div>
+      <div class="char-emotion">দূর থেকেই চিৎকার করে</div>
+      <div class="dialogue-text">
+        সিক্ত ভাই! ভাই শুনছেন? জিতছি! রেস জিতছি! ভাই আপনি legend!
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">ঘুরে দেখে, এক সেকেন্ড চেয়ে থাকে, তারপর হাঁটতে থাকে</div>
+      <div class="dialogue-text">
+        গাড়ি ভালো ছিল।
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue minor-cue">Rafiq</div>
+      <div class="char-emotion">পিছু পিছু হাঁটছে</div>
+      <div class="dialogue-text">
+        না না ভাই শুধু গাড়ি না — আপনার হাতের জাদু আছে। মানুষ জিজ্ঞেস করছে মেকানিক কে, আমি বললাম সিক্ত — ওরা বলল সে কি ওই সিক্ত? আমি বললাম হ্যাঁ! ভাই তখন respect কতটুকু!
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">রেঞ্চ তুলতে তুলতে, পেছনে না তাকিয়ে</div>
+      <div class="dialogue-text">
+        ভালো। আপনার SUV-এর appointment কবে নিছেন?
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue minor-cue">Rafiq</div>
+      <div class="char-emotion">একটু থামে</div>
+      <div class="dialogue-text">
+        ...নেই আসলে। আমি ভাবছিলাম আজকে—
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">ঘুরে তাকায়। deadpan।</div>
+      <div class="dialogue-text">
+        ভাই। App খুলেন। নেন appointment।
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue minor-cue">Rafiq</div>
+      <div class="char-emotion">বুকে হাত দিয়ে</div>
+      <div class="dialogue-text">
+        ভাই আমরা দেশের মানুষ না? একটু—
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">সামান্য হাসি। কিন্তু সিরিয়াস।</div>
+      <div class="dialogue-text">
+        দেশের ভাইদের কাছ থেকে extra নিই ভাই। দেশের মায়া।
+      </div>
+    </div>
+
+    <p class="action">
+      Rafiq হাসে। সিক্তও হাসে — এক সেকেন্ড, তারপর সরে যায়। ওর কাজ আছে।
+    </p>
+
+    <div class="beat">Sikto to his employee — Nayeem, early 20s, BD-American, always on his phone but somehow gets everything done.</div>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">Nayeem-কে, হাতে কাগজের একটা তালিকা</div>
+      <div class="dialogue-text">
+        আমি Riverside যাচ্ছি। Parts আনতে হইব। ওই সাপ্লায়ার আবার দেরি করলে এইবার সত্যিই যাই মারি। দোকান দেখিস। ৩টার Ferrari আসব — key দিয়ে রাখিস, কাজ শুরু করিস না।
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue minor-cue">Nayeem</div>
+      <div class="char-emotion">ফোনে thumbs up emoji পাঠাতে পাঠাতে মুখে বলে</div>
+      <div class="dialogue-text">
+        ওকে। ভাই কত নাম্বার plate-এর Ferrari?
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">গাড়িতে উঠছে</div>
+      <div class="dialogue-text">
+        Ferrari আসলে বুঝবি।
+      </div>
+    </div>
+
+    <p class="action">
+      সে বের হয়। পিছন থেকে আরেকটা গাড়ি ঢোকে — একটা plain white van। সিক্ত half দেখে, সরে যায়। নাইম গিয়ে van-এর দিকে এগোয়।
+    </p>
+
+    <div class="beat">Hold on the van. It stops deep in the garage. The driver stays in. Doesn't get out. Just sits there.</div>
+
+    <div class="sound-cue">Engine off. Silence. Just the overhead fluorescent hum.</div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <div class="scene-num">Scene 09</div>
+      <div class="scene-location">EXT. FREEWAY — OUTSIDE LOS SANTOS</div>
+      <div class="scene-time">বিকেল · সিক্ত ফেরার পথে</div>
+    </div>
+
+    <p class="action">
+      সিক্ত গাড়ি চালাচ্ছে। Sunroof খোলা। Back seat-এ parts-এর বাক্স। Radio-তে কিছু একটা বাজছে — সে মনোযোগ দিচ্ছে না।
+    </p>
+
+    <p class="action">
+      ফোন বাজে। Nayeem।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">হাতে ধরে, steering-এ এক হাত</div>
+      <div class="dialogue-text">
+        কী হইছে রে। Ferrari আইছে?
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue minor-cue">Nayeem (ফোনে)</div>
+      <div class="char-emotion">গলা ভাঙা, breathless</div>
+      <div class="dialogue-text">
+        ভাই। ভাই একটু... ভাই পুলিশ আসছে। গ্যারেজে। ভাই ওখানে একটা... ভাই লাশ।
+      </div>
+    </div>
+
+    <p class="action">
+      Radio বাজতে থাকে। সিক্ত কোনো কথা বলে না।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">flat tone</div>
+      <div class="dialogue-text">
+        কী বললি।
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue minor-cue">Nayeem</div>
+      <div class="dialogue-text">
+        ভাই ওই van — যে ঢুকছিল — ভাই ওর ভেতরে ছিল। আমি খুলতেই — ভাই আপনার toolbox-এর পাশে সব পড়ে আছে। আপনার chain, আপনার gloves — ভাই সব আপনার জিনিস পাশে।
+      </div>
+    </div>
+
+    <p class="action">
+      সিক্ত গাড়ি ধীর করে। পাশের lane-এ যায়। থামায়।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">গাড়ি থামিয়ে, steering ধরে বসে আছে</div>
+      <div class="dialogue-text">
+        শোন। তুই কাউকে কিছু বলবি না। পুলিশ জিজ্ঞেস করলে বলবি আমার সাথে contact হচ্ছে না। বুঝলি?
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue minor-cue">Nayeem</div>
+      <div class="char-emotion">ভয় পাচ্ছে</div>
+      <div class="dialogue-text">
+        ভাই আপনি কি—
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">সরাসরি</div>
+      <div class="dialogue-text">
+        আমি কিছু করি নাই। এটা সাজানো। ঠিক আছে?
+      </div>
+    </div>
+
+    <p class="action">
+      ফোন রাখে। Steering-এ হাত রেখে সামনে তাকায়। রাস্তা ফাঁকা। রোদ মরে আসছে।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">নিজের মনে, প্রায় ফিসফিস</div>
+      <div class="dialogue-text">
+        কে করল এইটা।
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CONVERGENCE ===== -->
+  <div class="scene-sep">Convergence</div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <div class="scene-num">Scene 10</div>
+      <div class="scene-location">EXT. HIGHWAY REST STOP — LOS SANTOS OUTSKIRTS</div>
+      <div class="scene-time">আজ · দুপুর</div>
+    </div>
+
+    <div class="flashback-warn">⬤ PRESENT — BOTH TIMELINES MEET</div>
+
+    <div class="beat">A gas station rest stop. Half the pumps broken. A vending machine with a cracked panel. Abrar is here — laptop open on the hood of the Uber that dropped him. The driver left. He's just standing here alone.</div>
+
+    <p class="action">
+      আবরার laptop-এ search করছে। তার চোখের নিচে ক্লান্তি। Shell sign-টার ছবি এখনো screen-এ।
+    </p>
+
+    <p class="action">
+      সে LA area-র garage incidents দেখছে। "Signature Auto." Owner name. একটা face আছে news-এ — blurred, কিন্তু কিছু একটা চেনা লাগছে। পুরনো কোনো কিছু।
+    </p>
+
+    <p class="action">
+      সে screen zoom করে। থামে।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">নিচু গলায়, প্রায় নিজেকে বলছে</div>
+      <div class="dialogue-text">
+        সিক্ত?
+      </div>
+    </div>
+
+    <p class="action">
+      সে কিছুক্ষণ screen দেখে। তারপর laptop বন্ধ করে। ব্যাগ তুলে হাঁটে। Gas station-এর ভেতরে ঢোকে — এক বোতল পানি নেয়। counter-এ দাঁড়িয়ে একটা decision নেওয়ার চেষ্টা করছে।
+    </p>
+
+    <div class="beat">He opens his laptop again. Types fast. It's not a Google search — it's something deeper. Traffic cam feeds. License plate databases. He's not looking for an address. He's looking for a car last seen near Riverside heading west.</div>
+
+    <p class="action">
+      দশ মিনিট পরে সে gas station-এর বাইরে একটা beat-up rental নিয়ে বের হয়। দিক: Los Santos South।
+    </p>
+  </div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <div class="scene-num">Scene 11</div>
+      <div class="scene-location">EXT. SIDE ROAD — LS SOUTH, INDUSTRIAL AREA</div>
+      <div class="scene-time">বিকেল ৪:৩০</div>
+    </div>
+
+    <p class="action">
+      <em>সিক্ত</em> তার গাড়ি একটা নির্জন side road-এ থামিয়ে রেখেছে। সে বাইরে বের হয়ে গাড়ির bonnet-এ বসে আছে। ফোন বন্ধ। সামনে খোলা road।
+    </p>
+
+    <p class="action">
+      দূরে একটা গাড়ি আসছে — ধীরে ধীরে। সিক্ত দেখে। গাড়িটা আসছেই। তার সামনে এসে রাস্তা block করে দাঁড়িয়ে যায়।
+    </p>
+
+    <p class="action">
+      সিক্ত গাড়ি থেকে নামে। Seat-এর নিচ থেকে একটা baseball bat বের করে। সহজভাবে। Habit-এ।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">সামনের গাড়ির দিকে হাঁটছে, গলায় কোনো উত্তেজনা নেই — বরং ক্লান্তি আছে</div>
+      <div class="dialogue-text">
+        বাইর হও। এখনই।
+      </div>
+    </div>
+
+    <p class="action">
+      সামনের গাড়ির দরজা খোলে। <em>আবরার</em> বের হয়। হাত উপরে — weapon নেই। পরনে crumpled office shirt, hoodie গলায়, চোখে dark circle।
+    </p>
+
+    <p class="action">
+      সিক্ত থামে। bat নামায় না। তাকিয়ে থাকে।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">হাত উপরে রেখেই, সরাসরি</div>
+      <div class="dialogue-text">
+        আমি পুলিশ না।
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">তখনো bat-এ হাত, কিন্তু কিছু একটা হচ্ছে মাথায়</div>
+      <div class="dialogue-text">
+        তাইলে কে?
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">সোজা তাকিয়ে</div>
+      <div class="dialogue-text">
+        তুই কি সিক্ত? Cox's Bazar-এর পাশে বাড়ি? Horizon School, ২০১৭?
+      </div>
+    </div>
+
+    <p class="action">
+      কিছু একটা নড়ে সিক্তের চোখে। সে এক পা পিছিয়ে যায়।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">bat আস্তে নামছে, কিন্তু চোখ সরায় না</div>
+      <div class="dialogue-text">
+        তুই... আবরার?
+      </div>
+    </div>
+
+    <p class="action">
+      দুজনে তাকিয়ে থাকে। আট বছর। দুটো মানুষ।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">হাত নামায়</div>
+      <div class="dialogue-text">
+        হ্যাঁ।
+      </div>
+    </div>
+
+    <p class="action">
+      সিক্ত bat-এর উপর ভর দিয়ে দাঁড়িয়ে থাকে। একটা নিঃশ্বাস।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">ঢাকাইয়া tone, আস্তে। এটা relief না fear</div>
+      <div class="dialogue-text">
+        আট বছর পরে এইভাবে দেখা হইল শালা।
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">সামান্য। হয়তো হাসি, হয়তো না।</div>
+      <div class="dialogue-text">
+        তোর গ্যারেজে কী হইছে?
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">সোজা তাকিয়ে</div>
+      <div class="dialogue-text">
+        তোর অফিসে কী হইছে?
+      </div>
+    </div>
+
+    <p class="action">
+      দুজনেই চুপ। রাস্তায় একটা ট্রাক যায়। ধুলো ওড়ে।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">ধীরে। প্রতিটা শব্দ মেপে।</div>
+      <div class="dialogue-text">
+        দুটো incident-এ একটা চিহ্ন আছে। একটা শেলের চিহ্ন।
+      </div>
+    </div>
+
+    <p class="action">
+      সিক্ত কিছু বলে না। কিন্তু মুখ পালটায়।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">নিচু গলায়, প্রায় নিজের মনে</div>
+      <div class="dialogue-text">
+        সমুদ্রের শামুক।
+      </div>
+    </div>
+
+    <p class="action">
+      বাতাস থামে। কিছু একটা আছে এই দুটো কথার মধ্যে যেটা বলা হলো না। দুজনেই জানে কী।
+    </p>
+
+    <div class="beat">Neither speaks for six seconds. A long six seconds. Then Sikto moves toward his car.</div>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">গাড়িতে উঠতে উঠতে, ওর দিকে ফিরে না দেখেই</div>
+      <div class="dialogue-text">
+        গাড়িতে ওঠ। আমি একটা জায়গা জানি।
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ACT 3: THE BAR ===== -->
+  <div class="scene-sep">সন্ধ্যা · বারের দিকে</div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <div class="scene-num">Scene 12</div>
+      <div class="scene-location">INT. SIKTO'S CAR — MOVING</div>
+      <div class="scene-time">সন্ধ্যা</div>
+    </div>
+
+    <p class="action">
+      দুজন চলছে। সিক্ত চালাচ্ছে। আবরার passenger seat-এ। দুজনেই সামনে তাকিয়ে।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">কিছুক্ষণ পরে, রাস্তার দিকে তাকিয়েই</div>
+      <div class="dialogue-text">
+        রকি আর সাব্বির কোথায় আছে জানিস?
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">steering ধরে, eye contact করে না</div>
+      <div class="dialogue-text">
+        না। তুই?
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="dialogue-text">
+        রকি Los Santos-এ। Mireles District। ওর বাবার business empire এখন ওর। খুঁজে পাওয়া কঠিন না।
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">একটু pause</div>
+      <div class="dialogue-text">
+        সাব্বির?
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">সরাসরি</div>
+      <div class="dialogue-text">
+        জানি না। Military-তে ছিল। তারপর কিছু হয়েছে।
+      </div>
+    </div>
+
+    <p class="action">
+      আরেকটা silence। বাইরে city lights শুরু হচ্ছে।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">window-র দিকে তাকিয়ে, casual tone কিন্তু প্রশ্নটা casual না</div>
+      <div class="dialogue-text">
+        আট বছর পরে এই কারণে দেখা করতে হচ্ছে।
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">উত্তর দেয় না। তারপর।</div>
+      <div class="dialogue-text">
+        হ্যাঁ।
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CLIFFHANGER ===== -->
+  <div class="scene-sep">Cliffhanger — Episode End</div>
+
+  <div class="scene">
+    <div class="scene-header">
+      <div class="scene-num">Scene 13 — EPISODE FINALE</div>
+      <div class="scene-location">EXT./INT. BAR — MIRELES DISTRICT, LOS SANTOS</div>
+      <div class="scene-time">রাত ৮টা</div>
+    </div>
+
+    <div class="beat">A premium bar. Valet. Black cars lined up. Music bleeding through the walls. Abrar and Sikto stand across the street watching the entrance.</div>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">বারের দিকে তাকিয়ে</div>
+      <div class="dialogue-text">
+        রকি বড় হইছে দেখতেছি।
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">dry</div>
+      <div class="dialogue-text">
+        ছিলই।
+      </div>
+    </div>
+
+    <p class="action">
+      ওরা ঢোকে। Dim light। লোকজন। Smooth jazz।
+    </p>
+
+    <p class="action">
+      দুজন ধীরে ধীরে এগোয়। কিছু একটা দেখছে। Camera ওদের পিছন থেকে দেখায় — ওরা কী দেখছে সেটা দেখায় না। শুধু ওদের reaction।
+    </p>
+
+    <div class="dialogue-block">
+      <div class="char-cue abrar-cue">আবরার</div>
+      <div class="char-emotion">থামে। আস্তে।</div>
+      <div class="dialogue-text">
+        সেটা কি...
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="char-cue sikto-cue">সিক্ত</div>
+      <div class="char-emotion">থামে। ওর আগেই দেখেছে।</div>
+      <div class="dialogue-text">
+        হ্যাঁ।
+      </div>
+    </div>
+
+    <div class="beat">Camera slowly rotates. Bar corner. A figure. Back to us. Expensive suit. One hand around a glass — three fingers only, thumb and pinky out, that specific lazy grip that means the glass has been there a while. The ice is half-melted. He's alone. He's been alone for a while.</div>
+
+    <div class="beat">We never see his face. Just the silhouette. The glass. The posture. Someone who owns the room without trying.</div>
+
+    <div class="sound-cue">Score rises slowly — a single note held, low, unresolved. Holds. Holds. Then — CUT TO BLACK.</div>
+
+    <p class="action" style="text-align:center; margin-top:2rem; font-style:normal; font-size:1rem; color:var(--accent);">
+      END OF EPISODE ONE
+    </p>
+
+    <p style="text-align:center; font-family:var(--font-en); font-size:11px; letter-spacing:3px; color:var(--text3); margin-top:0.5rem;">
+      Episode 2: "Rocky" — drops next
+    </p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="arcs">
+  <p class="section-label">Season Arc Map</p>
+  <h2 class="section-title">সিরিজের গল্পের মানচিত্র</h2>
+
+  <div class="arc-box">
+    <h4>Episode 2 — "Rocky"</h4>
+    <p>Rocky-র face reveal। বারে মাতাল — চেনে না, ঝামেলা করে। সিক্ত একটা থাপ্পড় দেয়। Rocky পড়ে যায়, উঠে বসে, চেনে। সেই ঠেলাঠেলির মধ্যে তার ভেতরের সমস্যাটাও বেরিয়ে আসে — Mehedi। Rocky-র safe house। চারজনের জন্য dark web hire-এর idea।</p>
+  </div>
+
+  <div class="arc-box">
+    <h4>Episode 3 — "Ghost"</h4>
+    <p>সাব্বির। Dark web-এ hire হয়। সে জানে না client কে। Target: Mehedi। Bar-এ job করতে গিয়ে তিনজনকে দেখে। তাড়া করে। মনে হয় villain। Episode শেষে tension maximum — পরের episode-এ reveal।</p>
+  </div>
+
+  <div class="arc-box">
+    <h4>Episode 4 — "চার"</h4>
+    <p>চারজন মিলন। সাব্বির চেনে। হাসি-কষ্ট একসাথে। সবার incident মিলিয়ে দেখে — seashell sign প্রতিটায়। কেউ একজন পুরনো কথা মনে করিয়ে দেয়। তারা avoid করে। কিন্তু এড়ানো যায় না।</p>
+  </div>
+
+  <div class="arc-box">
+    <h4>Episode 5 — "সেই রাতের কথা"</h4>
+    <p>Emotional core। চারজন প্রথমবার সেই রাতের কথা বলে। Flashback। Raiyan-এর কথা। তানভীরের কথা। কে কতটা অপরাধ বোধ করে সেটা বেরিয়ে আসে না সরাসরি — বেরিয়ে আসে চুপ থাকায়, সরে যাওয়ায়।</p>
+  </div>
+
+  <div class="arc-box">
+    <h4>Episodes 6–8 — "তানভীর"</h4>
+    <p>তানভীরের reveal। তার দিক থেকে সেই রাতের story। Tragic, not monstrous। Action episodes। প্রতিটার skill কাজে আসে। শেষ সিদ্ধান্ত — সত্যিটা বলবে কি? কীভাবে শেষ হবে? Realistic, not happy.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="notes">
+  <p class="section-label">Writer's Room</p>
+  <h2 class="section-title">লেখকের নোটবুক</h2>
+
+  <p style="color:var(--text2); font-size:0.95rem; line-height:1.9; margin-bottom:2rem;">
+    এই সিরিজ guilt নিয়ে। Specifically — guilt যেটা মানুষ ভুলে থাকার চেষ্টা করে। Bury করে। নতুন জীবন বানায়। কিন্তু সেটা কখনো যায় না, শুধু চুপ থাকে। আর একদিন কেউ সেই চুপকে ভাঙে।
+    <br><br>
+    তানভীর villain না। সে কষ্ট পাওয়া একটা ছেলে। চারজনও pure villain না। তারা ভুল করেছিল — ভয়ংকর ভুল — কিন্তু তারা মানুষ ছিল। এই tension-টাই সিরিজের core।
+  </p>
+
+  <div class="notes-box">
+    <h4>Tone & Style Rules</h4>
+    <ul>
+      <li>Dialogue কখনো clean confession দেবে না। মানুষ subtext-এ কথা বলে। "হ্যাঁ" মানে অনেক কিছু।</li>
+      <li>সিক্তের Dhaka accent কখনো যাবে না। এটা character-এর একটা অংশ — বাদ দিলে সে অন্য মানুষ।</li>
+      <li>Comedy situation থেকে আসবে — forced joke না। Karim Uncle-এর scene-এ কেউ joke করেনি। Situation-ই funny।</li>
+      <li>Rocky মাতাল অবস্থায় funny। Sober হলে শার্প। এই contrast maintain করতে হবে।</li>
+      <li>Action scene-এ dialogue কমে আসবে। Camera-ই বলবে।</li>
+      <li>Seashell sign — প্রতিটা episode-এ আছে। দর্শক আগে দেখবে, characters পরে।</li>
+      <li>Flashback গুলো warm, grainy। Present cooler, sharper। একটু contrast এ বোঝা যাবে।</li>
+      <li>কেউ perfectly grammatical বাংলায় কথা বলবে না। Real conversation fragmented হয়।</li>
+    </ul>
+  </div>
+
+  <p style="color:var(--text3); font-size:0.8rem; font-family:var(--font-en); margin-top:2rem; text-align:center; letter-spacing:2px;">
+    CHOUKATH — Written by ABRAR &nbsp;·&nbsp; All characters fictional &nbsp;·&nbsp; Los Santos is a fictional city &nbsp;·&nbsp; © 2026
+  </p>
+</section>
+
+</body>
+</html>
